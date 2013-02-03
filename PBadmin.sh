@@ -51,10 +51,10 @@ list()
 search()
 	{
 	clear
-	echo "Which File or Directory are you looking for?"
+	echo "What File or Directory are you looking for?"
 	read lf
 	if [ $lf != 9 ] ; then
-	find / -maxdepth 20 -name $lf
+	find / -maxdepth 20 -name *$lf*
 	else
 	echo "Returning to the main menu."
 	fi
@@ -159,6 +159,8 @@ restart()
 	read ch
 	if [ $ch = y ] || [ $ch = Y ]; then
 	reboot
+	else
+	echo "No Restart. Returning to Configuration Menu."
 	fi
 	}
 
@@ -197,13 +199,17 @@ editPB()
 	echo "Do you wish to continue? (y/n)"
 	read ch
 	if [ $ch = y ] || [ $ch = Y ]; then
+	/etc/init.d/piratebox stop
 	$editor /opt/piratebox/conf/piratebox.conf
+	/etc/init.d/piratebox start
 	fi
 	else
 	echo "Do you wish to continue? (y/n)"
 	read ch
 	if [ $ch = y ] || [ $ch = Y ]; then
+	/etc/init.d/piratebox stop
 	$editor /opt/piratebox/conf/piratebox.conf
+	/etc/init.d/piratebox start
 	fi
 	fi
 	}
@@ -212,37 +218,49 @@ editPB()
 chSSID()
 	{
 	clear 
-	echo "This option allows you to change the SSID of the PirateBox network."
-	if [ $editor = vi ];then
-	vihelp	
-	echo "Do you wish to continue? (y/n)"
+	echo "This option allows you to change the SSID (name) of the PirateBox network."
+	echo "Current SSID is:"	
+	cat /etc/config/wireless | grep ssid |  sed 's/^[^d]*//' | sed 's/^...// ; s/.$//'
+	echo ""
+	echo "Do you want to change?(y/n)"
 	read ch
 	if [ $ch = y ] || [ $ch = Y ]; then
-	$editor /etc/config/wireless
-	fi
+	echo "Enter new SSID:"
+	read newSSID
+	sed '/option ssid/d' /etc/config/wireless > /etc/config/wireless.tmp
+	mv /etc/config/wireless.tmp /etc/config/wireless 
+	echo "	option ssid '$newSSID'" >> /etc/config/wireless
+	/etc/init.d/network reload
 	else
-	echo "Do you wish to continue? (y/n)"
-	read ch
-	if [ $ch = y ] || [ $ch = Y ]; then
-	$editor /etc/config/wireless
-	fi
+	echo "SSID not changed. Returning to Configuration Menu."
 	fi
 	}
 
 
-time()
+time()   #BUG 2:07, loa
 	{
 	clear
 	echo "The Router has been running for:" 
-	uptime | awk '{print $3,$4}'
-	}
+	uptime | awk '{print $3}' | sed 's/.$//'
+	} 
 
 stationcnt()
 	{
 	clear
 	echo "Number of connected users:"
 	cat /opt/piratebox/www/station_cnt.txt | awk '{print $16}'
-	}	
+	}
+
+setpasswd()
+{
+	echo "Are you sure you want to change the root password?(y/n)"
+	read ch
+	if [ $ch = y ] || [ $ch =Y ]; then
+	passwd
+	else
+	echo "Password left unchanged. Returning to Configuration Menu."
+	fi
+}
 
 quit()
 	{
