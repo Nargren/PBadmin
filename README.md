@@ -25,3 +25,21 @@ scp PBadmin.sh root@PirateBoxIP:/tmp<br>
 <br>
 run with<br>
 /tmp/./PBadmin.sh<br>
+
+###Image gallery creator###
+Shell script that takes all .bmp, .png,.jpg and .gif files from the /Shared folder and creates a simple 
+image gallery from them.
+
+Currently under testing/development.
+To run the script do the following:
+scp PBimg_organize.sh root@192.168.1.1:/tmp/
+ssh root@192.168.1.1
+/tmp/./PBimg_organize.sh
+
+(If you can, you can copy the script somehwere alse on the router as well, /etc for example)
+
+The script runs and creates the website picutres.html that can be accessed later on.
+The image gallery is accessible through "pictures.html".
+Example: piratebox.lan/pictures.html
+
+The script has to be run first. Do:
