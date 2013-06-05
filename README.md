@@ -1,7 +1,9 @@
 PBadmin
 =======
-# Under testing! Use with EXTREME CARE! #
+# Under testing! For demonstartional purposes only! #
 
+Currently the sccript is set to create a directory list from my computer. 
+PirateBox routes are commented out.
 
 ###PirateBox Administrator Script Package:###
 
