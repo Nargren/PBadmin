@@ -1,0 +1,129 @@
+/* Reset */
+*{-moz-box-sizing:border-box;-webkit-box-sizing:border-box;box-sizing:border-box;overflow:auto}html,body,div,object,iframe,fieldset{margin:0;padding:0;border:0}ol,ul{list-style:none;margin:0;padding:0}header,footer,nav,section,article,hgroup,figure{display:block}legend{display:none}body{font-family:sans-serif;font-size:100%}h1,h2,h3,h4,h5,h6,p{margin:0}
+/* Colors:
+Black: #1B1D1E
+White: #FFFFFF
+*/
+
+/* Base */
+html {}
+
+body {
+background: #E5E5E5;
+color: #1B1D1E;
+}
+
+p {
+margin: 0;
+padding-top:3px;
+padding-bottom:3px;
+line-height: 1.25em;
+}
+
+p + p {
+margin: 1em 0;
+}
+
+a {
+color: rgb(173, 0, 11);
+text-decoration: none;
+}
+
+.blue {
+color: #0000FF;
+}
+
+.green {
+color: #008000;
+}
+
+.orange {
+color: #FF8040;
+}
+
+.red {
+color: #FF0000;
+}
+
+page{}									/*HTML Directory List Page*/
+
+	body 	{ 
+		margin: 0px 0px 0px 0px; /* top right bottom left*/
+		min-width:800px;
+		text-align:center;
+		float: center;
+		background: #E5E5E5;
+		}
+		
+	#page-wrap {
+		width: 90%;
+		margin:auto;
+		}
+		
+	#header {
+		background: #736F6E;
+		text-align: center;
+		height: 40px;
+		width: 100%;
+		margin: 0 0 0 0;
+		box-shadow: 10px 10px 5px #888888;
+		}
+		
+	#logo 	{			
+		width: 100%;
+		padding: 2px 0 2px 0;	/* top right bottom left*/
+		background:#1B1D1E;
+		}
+		
+	h1 	{
+		color:#00ff00;
+	   	}
+   	
+	a 	{
+		text-align:left;
+		padding-left 5px;
+		}
+
+									
+table {										/*Generated table*/
+	text-align:center;
+	border: 1px solid black;
+	border-radius: 10px 10px 10px 10px; /* top right bottom left*/
+	margin: 5px 20px 10px 50px; /* top right bottom left*/
+      }
+		   
+	tr {
+	   text-align:center;
+	   padding-top:10px;
+	   }
+
+	td {
+	   padding: 10px 10px 10px 10px;
+	 
+	   }
+	   
+	td.heading {
+		font-weight: bold;
+		text-decoration:underline;
+		color:blue;
+	
+		   }
+	
+	td.img {  text-align: center;}
+	td.name { text-align:left;}
+	td.size {  text-align: center;}
+	td.date {  text-align: center;}
+
+img{}									/*Image properties*/
+
+	img.thumbnail 	{
+			width:64px;
+			height:64px;
+			text-align:center;
+			margin:2px;
+		      	}
+		      	
+	img.logo	{
+			text-align:center;	
+			}
+	
